@@ -41,7 +41,21 @@ cordis 组合里的对应 entry 会让 dsh 在浏览器端加载它（`window.__
 
 ## 安装
 
-前提：node ≥ 18（prepare 脚本用）、Windows + PowerShell 7（install.ps1）。
+### 方式一：npm 安装（推荐，跨平台）
+
+前提：node ≥ 18、dsh 已初始化过对应 profile（跑过一次 `dsh web`）。
+
+```bash
+dsh plugin --profile web add dsh-mermaid-boost
+node node_modules/dsh-mermaid-boost/scripts/install.mjs --profile web
+```
+
+第二条命令把 loader entry 写进 profile 的 `cordis.patch.yml`（幂等，自动备份）。
+然后**重启 dsh web**，刷新 GUI 即可。
+
+macOS / Linux 同理，只是路径与前缀不同（`~/.dsh/profiles/web/...`）。
+
+### 方式二：源码安装（Windows / PowerShell）
 
 ```powershell
 git clone https://github.com/icnws/dsh-mermaid-boost.git
@@ -85,6 +99,20 @@ pwsh -File install.ps1                  # 默认安装到 web profile
 - 改 `lib/client.js`（浏览器端逻辑）后重启 dsh web 生效
 - 改 `lib/index.js`（路由）后重启 dsh web 生效（node 代码不热重载）
 - 升级 mermaid：删除 `lib/mermaid/` 目录，重跑 `npm run prepare:mermaid`
+
+### 发布 npm 包
+
+`lib/mermaid/` 不进 git，但通过 package.json 的 `files` 字段进 npm 包，所以
+发布前先确保 vendor 树存在：
+
+```bash
+npm run prepare:mermaid     # 已存在则跳过；删除 lib/mermaid 可强制重生成
+npm login                   # 首次发布需要
+npm publish
+```
+
+之后别人就能用上面的"方式一"安装。升级流程：改代码 → `npm version patch` →
+重跑 prepare（如 mermaid 有升级）→ `npm publish` → 提交推送 git。
 
 ### 排错
 

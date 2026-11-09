@@ -19,6 +19,15 @@
   "scripts": {
     "prepare:mermaid": "node scripts/prepare-mermaid.mjs"
   },
+  "files": [
+    "lib",
+    "scripts",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "deepseek-harness",
     "dsh",
