@@ -1,5 +1,9 @@
 # dsh-mermaid-boost
 
+[![npm version](https://img.shields.io/npm/v/dsh-mermaid-boost.svg)](https://www.npmjs.com/package/dsh-mermaid-boost)
+[![npm downloads](https://img.shields.io/npm/dm/dsh-mermaid-boost.svg)](https://www.npmjs.com/package/dsh-mermaid-boost)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 [DeepSeek Harness（dsh）](https://github.com/deepseek-ai/deepseek-harness) Web GUI 的
 Mermaid 渲染插件：把对话消息、Markdown 文档预览、交付物卡片里所有 ` ```mermaid `
 代码块直接渲染成图，不再只是干巴巴的源码。
