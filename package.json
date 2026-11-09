@@ -1,0 +1,34 @@
+{
+  "name": "dsh-mermaid-boost",
+  "description": "Renders ```mermaid fenced code blocks as diagrams across the dsh Web GUI (chat transcript, Markdown document preview, deliverables). Self-contained: the node half serves the bundled mermaid library from its own HTTP route; the client half watches the DOM for mermaid code blocks and renders them in place.",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./lib/*": "./lib/*",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "scripts": {
+    "prepare:mermaid": "node scripts/prepare-mermaid.mjs"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "mermaid",
+    "markdown"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icnws/dsh-mermaid-boost.git"
+  },
+  "license": "MIT"
+}

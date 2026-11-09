@@ -1,0 +1,13 @@
+# generated mermaid vendor tree (rebuild with: npm run prepare:mermaid)
+lib/mermaid/
+
+# dependencies and local installs
+node_modules/
+
+# logs and temp output
+*.log
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
